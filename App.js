@@ -1,3 +1,5 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import {
@@ -8,18 +10,39 @@ import {
   Text,
   FlatList,
   ActivityIndicator,
+  Button,
 } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 
+import AboutScreen from "./About";
 import Person from "./components/person";
 
-const Item = ({ name }) => (
-  <View style={styles.item}>
-    <Text style={styles.name}>{name}</Text>
-  </View>
-);
+const Stack = createStackNavigator();
 
 export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={({ navigation }) => ({
+            headerRight: () => (
+              <Button
+                onPress={() => navigation.navigate("About")}
+                title="About"
+                color="darkgray"
+              />
+            ),
+          })}
+        />
+        <Stack.Screen name="About" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+function HomeScreen({ navigation }) {
   const [parliamentJson, setParliamentJson] = useState(null);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +70,6 @@ export default function App() {
     };
     fetchData();
   }, []);
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
