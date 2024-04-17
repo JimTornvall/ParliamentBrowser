@@ -25,5 +25,5 @@
 ### Should have
 
 - [ ] A search field is used to search for members/filter the list of members
-- [ ] The members' photos are displayed as avatars in the list
+- [x] The members' photos are displayed as avatars in the list
 - [ ] Utilizes mechanisms for handling application state, for example, through Context.

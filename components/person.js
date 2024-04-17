@@ -1,3 +1,4 @@
+import { Avatar } from "@rneui/themed";
 import { Asset } from "expo-asset";
 import * as React from "react";
 import { Text, Image } from "react-native";
@@ -31,9 +32,19 @@ const Person = ({ id, name, birth, email, phone, profession, image }) => {
       left={(props) => (
         <>
           {imgUri ? (
-            <Image source={{ uri: imgUri }} style={{ width: 24, height: 24 }} />
+            <Avatar
+              size={64}
+              rounded
+              source={{ uri: imgUri }}
+              key={`avatar-${id}`}
+            />
           ) : (
-            <List.Icon {...props} icon="account" />
+            <Avatar
+              size={64}
+              rounded
+              icon={{ name: 'user', type: 'font-awesome' }} // Replace 'icon-name' and 'icon-type' with the desired icon
+              containerStyle={{ backgroundColor: "lightgray" }}
+            />
           )}
         </>
       )}
