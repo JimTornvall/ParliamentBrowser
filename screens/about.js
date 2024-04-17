@@ -25,10 +25,10 @@ const About = () => (
           backgroundColor: "#fff",
           borderRadius: 10,
           padding: 20,
-          width: 300, // increase the width
-          height: 300, // increase the height
-          marginTop: "auto", // center vertically
-          marginBottom: "auto", // center vertically
+          width: 300,
+          height: 300,
+          marginTop: "auto",
+          marginBottom: "auto",
         }}
       >
         <Text style={{ fontWeight: "bold" }}>Parliament Browser</Text>

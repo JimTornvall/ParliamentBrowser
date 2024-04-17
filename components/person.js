@@ -1,7 +1,7 @@
 import { Avatar } from "@rneui/themed";
 import { Asset } from "expo-asset";
 import * as React from "react";
-import { Text, Image } from "react-native";
+import { Text } from "react-native";
 import { List } from "react-native-paper";
 
 const Person = ({ id, name, birth, email, phone, profession, image }) => {
@@ -42,7 +42,7 @@ const Person = ({ id, name, birth, email, phone, profession, image }) => {
             <Avatar
               size={64}
               rounded
-              icon={{ name: 'user', type: 'font-awesome' }} // Replace 'icon-name' and 'icon-type' with the desired icon
+              icon={{ name: "user", type: "font-awesome" }}
               containerStyle={{ backgroundColor: "lightgray" }}
             />
           )}
