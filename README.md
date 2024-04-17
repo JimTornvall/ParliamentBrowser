@@ -1,11 +1,19 @@
 # Parliament Browser
 
+For Aland Islands
+
 ## Functionallity
 
 - Loads all currently active Parliament members (PM)
 - Loads extended information of each PM
 - Loads and caches images of PM's in the list view
   - Always loads the image from web in details view to make sure it is current
+
+## Screenshots
+
+![Home Screen](docs/assets/Screenshot01.jpg)(width=10)
+![Details Screen](docs/assets/Screenshot02.jpg | width=100)
+![About Screen](docs/assets/Screenshot03.jpg | width=100)
 
 ## API used
 
