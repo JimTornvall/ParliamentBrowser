@@ -1,11 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-import { StyleSheet, View, Button } from "react-native";
+import { Button } from "react-native";
 
-import PersonDetails from "./components/personDetails";
 import AboutScreen from "./screens/about";
-import HomeScreen from "./screens/home"; // Import the HomeScreen component
+import ItemDetailsScreen from "./screens/details";
+import HomeScreen from "./screens/home";
 
 const Stack = createStackNavigator();
 
@@ -36,27 +36,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-function ItemDetailsScreen({ route }) {
-  const { item } = route.params;
-  return (
-    <View style={styles.container}>
-      <PersonDetails item={item} />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  item: {
-    backgroundColor: "#DBD7D2",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-});
