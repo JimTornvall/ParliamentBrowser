@@ -10,10 +10,9 @@ For Aland Islands
   - Always loads the image from web in details view to make sure it is current
 
 ## Screenshots
-
-![Home Screen](docs/assets/Screenshot01.jpg)(width=10)
-![Details Screen](docs/assets/Screenshot02.jpg | width=100)
-![About Screen](docs/assets/Screenshot03.jpg | width=100)
+Home Screen|Details Screen|About Screen
+-----------|--------------|------------
+![Home Screen](docs/assets/Screenshot03.jpg) | ![Details Screen](docs/assets/Screenshot02.jpg) | ![About Screen](docs/assets/Screenshot01.jpg)
 
 ## API used
 
