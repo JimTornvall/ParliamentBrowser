@@ -1,21 +1,11 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
-import {
-  KeyboardAvoidingView,
-  StyleSheet,
-  View,
-  Platform,
-  Text,
-  FlatList,
-  ActivityIndicator,
-  Button,
-} from "react-native";
-import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import React from "react";
+import { StyleSheet, View, Button } from "react-native";
 
-import AboutScreen from "./About";
-import Person from "./components/person";
+import PersonDetails from "./components/personDetails";
+import AboutScreen from "./screens/about";
+import HomeScreen from "./screens/home"; // Import the HomeScreen component
 
 const Stack = createStackNavigator();
 
@@ -37,78 +27,22 @@ export default function App() {
           })}
         />
         <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen
+          name="ItemDetails"
+          component={ItemDetailsScreen}
+          options={({ route }) => ({ title: route.params.item.name })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-function HomeScreen({ navigation }) {
-  const [parliamentJson, setParliamentJson] = useState(null);
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://api.lagtinget.ax/api/persons.json?state=1",
-        );
-        const data = await response.json();
-        setParliamentJson(data);
-        for (let i = 0; i < data.length; i++) {
-          const person = await fetch(
-            `https://api.lagtinget.ax/api/persons/${data[i].id}.json`,
-          );
-          const personData = await person.json();
-          data[i] = { ...data[i], ...personData };
-          setParliamentJson(data);
-        }
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-    fetchData();
-  }, []);
+function ItemDetailsScreen({ route }) {
+  const { item } = route.params;
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1, backgroundColor: "darkgray" }}
-    >
-      <SafeAreaProvider>
-        <SafeAreaView
-          style={{ ...styles.container, backgroundColor: "darkgray" }}
-        >
-          {isLoading ? (
-            <View style={styles.spinnerContainer}>
-              <ActivityIndicator size="large" color="white" />
-            </View>
-          ) : (
-            <>
-              <Text style={{ ...styles.bigText, fontSize: 24, color: "white" }}>
-                Parliament Currently Active
-              </Text>
-              <FlatList
-                data={parliamentJson}
-                renderItem={({ item }) => (
-                  <Person
-                    id={item.id}
-                    name={item.name}
-                    birth={item.birth}
-                    email={item.email}
-                    phone={item.phone}
-                    profession={item.profession}
-                    image={item.image ? item.image.url : null}
-                  />
-                )}
-                keyExtractor={(item) => item.id}
-              />
-            </>
-          )}
-          <StatusBar style="auto" />
-        </SafeAreaView>
-      </SafeAreaProvider>
-    </KeyboardAvoidingView>
+    <View style={styles.container}>
+      <PersonDetails item={item} />
+    </View>
   );
 }
 

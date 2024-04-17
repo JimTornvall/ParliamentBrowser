@@ -3,8 +3,9 @@
 ## Functionallity
 
 - Loads all currently active Parliament members (PM)
-- Loads extended information on each PM
-- Loads and caches images of PM's
+- Loads extended information of each PM
+- Loads and caches images of PM's in the list view
+  - Always loads the image from web in details view to make sure it is current
 
 ## API used
 
@@ -14,12 +15,12 @@
 
 ### Must have
 
-- [ ] The application consists of at least two pages
+- [x] The application consists of at least two pages
   - [x] One of which is a list of all sitting members of parliament
     - [x] Members of parliament are displayed in a FlatList
     - [x] The elements of the list utilize a third-party solution from, for example, React Native Elements or React Native Paper
-- [ ] The other page can be a welcome screen that is displayed when the application starts, or a detail view that is displayed when a member is selected from the list
-- [ ] React Navigation is used to move between the pages
+- [x] The other page can be a welcome screen that is displayed when the application starts, or a detail view that is displayed when a member is selected from the list
+- [x] React Navigation is used to move between the pages
 
 ### Should have
 
